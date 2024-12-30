@@ -1060,7 +1060,7 @@ $(document).ready(function () {
 			parse(adjusted_text);
 		}
 
-		$(this).attr('download', 'cara.png');
+		$(this).attr('download', 'pujangga.png');
 		$(this).attr('href', canvas.toDataURL());
 
 		// return to original height & width
