@@ -457,7 +457,7 @@ $(document).ready(function () {
 
 	var diacritic_vowels = ['i', 'u', 'e'];
 	var vowels = ['i', 'u', 'z', 'o', 'e'];
-	var consonants = ['a', 'k', 'g', 'q', 'c', 'j', 'x', 't', 'd', 'n', 'p', 'b', 'm', 'y', 'r', 'l', 'w', 's', 'h', '`']; // ` for placeholder
+	var consonants = ['a', 'k', 'g', 'q', 'c', 'j', 'x', 't', 'd', 'n', 'p', 'b', 'm', 'y', 'r', 'l', 'w', 's', 'h'];
 	var a_phobic = ['g', 'j', 'd', 'n', 'p', 'b', 'm', 'l', 's', 'z', 'o', '.', ',', '!', '0', '5', '9', ']', ')'];
 	var s_phobic = ['a', 'x', 'p', 'b', 'm', 'y', 'r', 'l', 'w', 'z', 'o', '.', ',', '!', ';', '0', '5', '6', '[', '('];
 	var q_phobic = ['a', 'k', 'g', 'q', 'c', 'j', 'x', 't', 'd', 'p', 'b', 'm', 'y', 'r', 'w', 's', 'h', 'z', 'o', '.', ',', '!', '2', ']', ')'];
@@ -822,7 +822,6 @@ $(document).ready(function () {
 			case '7':
 			case '8':
 			case '9':
-			case '`': // consonant placeholder
 				return 3;
 			case 'q':
 			case 'h':
@@ -1078,7 +1077,7 @@ $(document).ready(function () {
 		parse_adjust(transliterated);
 	});
 
-	consonants.forEach(c => {
+	consonants.concat(vowels).concat(['v', 'f']).forEach(c => {
 		$("#" + c + "_key").click(function () {
 			var old_text = $("#key-input").val();
 			var old_start = $("#key-input").prop('selectionStart');
