@@ -1019,31 +1019,31 @@ $(document).ready(function () {
 	$("#font-size").change(function () {
 		font_size = parseInt($(this).val());
 		font_width_abs = get_font_width_abs(font_width, font_size);;
-		var input_text = $(".textarea-home#input").val();
+		var input_text = $("#key-input").val();
 		parse_adjust(input_text);
 	});
 
 	$("#font-width").change(function () {
 		font_width = parseInt($(this).val());
 		font_width_abs = get_font_width_abs(font_width, font_size);;
-		var input_text = $(".textarea-home#input").val();
+		var input_text = $("#key-input").val();
 		parse_adjust(input_text);
 	});
 
 	$("#font-style").change(function () {
 		font_style = $(this).val();
-		var input_text = $(".textarea-home#input").val();
+		var input_text = $("#key-input").val();
 		parse_adjust(input_text);
 	});
 
 	$("#font-color").change(function () {
 		font_color = $(this).val();
-		var input_text = $(".textarea-home#input").val();
+		var input_text = $("#key-input").val();
 		parse_adjust(input_text);
 	});
 
 	// Textarea input listens to keypress events.
-	$(".textarea-home#input").keyup(function () {
+	$("#key-input").keyup(function () {
 		var input_text = $(this).val();
 		parse_adjust(input_text);
 	});
@@ -1072,27 +1072,33 @@ $(document).ready(function () {
 	});
 
 	$("#transliterate_button").click(function () {
-		var transliterated = transliterate($(".textarea-home#input").val());
-		$(".textarea-home#input").val(transliterated);
+		var transliterated = transliterate($("#key-input").val());
+		$("#key-input").val(transliterated);
 		parse_adjust(transliterated);
 	});
 
 	consonants.forEach(c => {
 		$("#" + c + "_key").click(function () {
-			var new_text = $(".textarea-home#input").val() + c;
-			$(".textarea-home#input").val(new_text);
+			var old_text = $("#key-input").val();
+			var old_start = $("#key-input").prop('selectionStart');
+			var old_end = $("#key-input").prop('selectionEnd');
+			var new_text = old_text.slice(0, old_start) + c + old_text.slice(old_end);
+			$("#key-input").val(new_text);
 			parse_adjust(new_text);
+			$("#key-input").focus();
+			$("#key-input").prop('selectionStart', old_start + 1);
+			$("#key-input").prop('selectionEnd', old_start + 1);
 		})
 	})
 
 	$(window).resize(function () {
 		min_width = $(window).width() * width_ratio;
 		set_canvas_width(min_width);
-		var input_text = $(".textarea-home#input").val();
+		var input_text = $("#key-input").val();
 		parse_adjust(input_text);
 	});
 
-	var input_text = $(".textarea-home#input").val();
+	var input_text = $("#key-input").val();
 	parse_adjust(input_text);
 
 });
