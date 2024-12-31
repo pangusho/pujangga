@@ -1089,7 +1089,7 @@ $(document).ready(function () {
 		$("#key-input").focus();
 		$("#key-input").prop('selectionStart', old_start + 1);
 		$("#key-input").prop('selectionEnd', old_start + 1);
-	})
+	});
 
 	$(window).resize(function () {
 		min_width = $(window).width() * width_ratio;
