@@ -457,7 +457,7 @@ $(document).ready(function () {
 
 	var diacritic_vowels = ['i', 'u', 'e'];
 	var vowels = ['i', 'u', 'z', 'o', 'e'];
-	var consonants = ['a', 'k', 'g', 'q', 'c', 'j', 'x', 't', 'd', 'n', 'p', 'b', 'm', 'y', 'r', 'l', 'w', 's', 'h'];
+	var consonants = ['a', 'k', 'g', 'q', 'c', 'j', 'x', 't', 'd', 'n', 'p', 'b', 'm', 'y', 'r', 'l', 'w', 's', 'h', '`']; // ` consonant placeholder
 	var a_phobic = ['g', 'j', 'd', 'n', 'p', 'b', 'm', 'l', 's', 'z', 'o', '.', ',', '!', '0', '5', '9', ']', ')'];
 	var s_phobic = ['a', 'x', 'p', 'b', 'm', 'y', 'r', 'l', 'w', 'z', 'o', '.', ',', '!', ';', '0', '5', '6', '[', '('];
 	var q_phobic = ['a', 'k', 'g', 'q', 'c', 'j', 'x', 't', 'd', 'p', 'b', 'm', 'y', 'r', 'w', 's', 'h', 'z', 'o', '.', ',', '!', '2', ']', ')'];
@@ -822,6 +822,7 @@ $(document).ready(function () {
 			case '7':
 			case '8':
 			case '9':
+			case '`': // consonant placeholder
 				return 3;
 			case 'q':
 			case 'h':
@@ -1077,18 +1078,17 @@ $(document).ready(function () {
 		parse_adjust(transliterated);
 	});
 
-	consonants.concat(vowels).concat(['v', 'f']).forEach(c => {
-		$("#" + c + "_key").click(function () {
-			var old_text = $("#key-input").val();
-			var old_start = $("#key-input").prop('selectionStart');
-			var old_end = $("#key-input").prop('selectionEnd');
-			var new_text = old_text.slice(0, old_start) + c + old_text.slice(old_end);
-			$("#key-input").val(new_text);
-			parse_adjust(new_text);
-			$("#key-input").focus();
-			$("#key-input").prop('selectionStart', old_start + 1);
-			$("#key-input").prop('selectionEnd', old_start + 1);
-		})
+	$(".keyboard-btn").click(function () {
+		var old_text = $("#key-input").val();
+		var old_start = $("#key-input").prop('selectionStart');
+		var old_end = $("#key-input").prop('selectionEnd');
+		var c = $(this).data('value');
+		var new_text = old_text.slice(0, old_start) + c + old_text.slice(old_end);
+		$("#key-input").val(new_text);
+		parse_adjust(new_text);
+		$("#key-input").focus();
+		$("#key-input").prop('selectionStart', old_start + 1);
+		$("#key-input").prop('selectionEnd', old_start + 1);
 	})
 
 	$(window).resize(function () {
