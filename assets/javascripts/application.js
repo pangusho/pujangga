@@ -1077,6 +1077,14 @@ $(document).ready(function () {
 		parse_adjust(transliterated);
 	});
 
+	consonants.forEach(c => {
+		$("#" + c + "_key").click(function () {
+			var new_text = $(".textarea-home#input").val() + c;
+			$(".textarea-home#input").val(new_text);
+			parse_adjust(new_text);
+		})
+	})
+
 	$(window).resize(function () {
 		min_width = $(window).width() * width_ratio;
 		set_canvas_width(min_width);

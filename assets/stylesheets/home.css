@@ -52,3 +52,25 @@
 	vertical-align: top;
 	padding-right: 8px;
 }
+
+.keyboard {
+	position: relative;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+.keyboard-btn {
+	padding: 0px;
+	position: relative;
+}
+
+.keyboard-img {
+	height: 40px;
+}
+
+.keyboard-label {
+	position: absolute;
+	bottom: 0px;
+	left: 2px;
+	color: maroon;
+}
