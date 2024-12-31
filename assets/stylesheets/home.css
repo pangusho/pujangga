@@ -31,6 +31,17 @@
 	text-align: center;
 }
 
+.dropdown-bar {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.dropdown-container {
+	display:flex;
+	flex-direction: row;
+	width: 320px;
+}
+
 .dropdown-label {
 	margin-top: 5px;
 }
