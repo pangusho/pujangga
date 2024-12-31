@@ -5,6 +5,17 @@
 	color: white;
 	padding-top: 12px;
 	padding-bottom: 16px;
+	position: relative;
+}
+
+.title-nav {
+	position: absolute;
+	right: 8px;
+	top: 8px;
+}
+
+.title-nav-pill:not(:hover) {
+	color: white;
 }
 
 .parent {
