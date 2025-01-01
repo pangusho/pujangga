@@ -63,7 +63,7 @@
 }
 
 .doc-image {
-	height: 56px;
+	max-height: 56px;
 }
 
 .doc-text {
