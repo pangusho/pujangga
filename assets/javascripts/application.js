@@ -878,8 +878,8 @@ $(document).ready(function () {
 
 	// Do best effort transliteration from Indonesian to Cara key
 	var transliterate = function (indo) {
-		var vowels = ['a', 'e', 'i', 'o', 'u'];
-		var consonants = ['b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x', 'y', 'z'];
+		var vowels = ['a', 'e', 'é', 'i', 'o', 'u'];
+		var consonants = ['b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x', 'y', 'z', "'"];
 
 		indo = indo.toLowerCase();
 		var cara = [];
@@ -900,7 +900,9 @@ $(document).ready(function () {
 					cara.push('a');
 				}
 				// insert the vowel if the vowel is not 'a'
-				if (c != 'a') {
+				if (c == 'é') {
+					cara.push('z');
+				} else if (c != 'a') {
 					cara.push(c);
 				}
 				// 'er' before consonant
@@ -962,6 +964,8 @@ $(document).ready(function () {
 					cara.push('kfs');
 				} else if (c == 'z') { // z
 					cara.push('j;');
+				} else if (c == "'") { // glottal stop
+					cara.push('a');
 				} else {
 					cara.push(c);
 				}
