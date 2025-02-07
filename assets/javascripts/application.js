@@ -892,7 +892,7 @@ $(document).ready(function () {
 
 			if (vowels.indexOf(c) != -1) {
 				// insert the vowel carrier if the vowel is not after a consonent
-				if (prev == 'i') {
+				if (prev == 'i' || prev == 'é') {
 					cara.push('y')
 				} else if (prev == 'u' || prev == 'o') {
 					cara.push('w');
