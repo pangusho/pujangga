@@ -357,77 +357,77 @@ $(document).ready(function () {
 	}
 
 	var _0 = function (x, y, r) {
-		context.moveTo(x, y - 3 * r);
-		context.arc(x + r, y - 3 * r, r, Math.PI, 0);
+		context.moveTo(x, y - 2.5 * r);
+		context.arc(x + r, y - 2.5 * r, r, Math.PI, 0);
 		context.lineTo(x + 2 * r, y - r);
 		context.arc(x + r, y - r, r, 0, Math.PI);
-		context.lineTo(x, y - 3 * r);
+		context.lineTo(x, y - 2.5 * r);
 	}
 
 	var _1 = function (x, y, r) {
-		context.moveTo(x, y - 3 * r);
-		context.arc(x, y - 4 * r, r, Math.PI / 2, 0, true);
-		context.moveTo(x + r, y - 4 * r);
+		context.moveTo(x, y - 2.5 * r);
+		context.arc(x, y - 3.5 * r, r, Math.PI / 2, 0, true);
+		context.moveTo(x + r, y - 3.5 * r);
 		context.lineTo(x + r, y);
 	}
 
 	var _2 = function (x, y, r) {
-		context.moveTo(x, y - 3 * r);
-		context.arc(x + r, y - 3 * r, r, Math.PI, Math.PI / 2);
-		context.arc(x + r, y - r, r, 3 * Math.PI / 2, Math.PI, true);
+		context.moveTo(x, y - 2.5 * r);
+		context.arc(x + r, y - 2.5 * r, r, Math.PI, Math.PI / 2);
+		context.arc(x + r, y - .5 * r, r, 3 * Math.PI / 2, Math.PI, true);
 		context.lineTo(x, y);
 		context.lineTo(x + 2 * r, y);
 	}
 
 	var _3 = function (x, y, r) {
-		context.moveTo(x, y - 3 * r);
-		context.arc(x + r, y - 3 * r, r, Math.PI, Math.PI / 2);
-		context.arc(x + r, y - r, r, 3 * Math.PI / 2, Math.PI);
+		context.moveTo(x, y - 2.625 * r);
+		context.ellipse(x + r, y - 2.625 * r, r, .875 * r, 0, Math.PI, Math.PI / 2);
+		context.ellipse(x + r, y - .875 * r, r, .875 * r, 0, 3 * Math.PI / 2, Math.PI);
 	}
 
 	var _4 = function (x, y, r) {
 		context.moveTo(x + 1.5 * r, y);
-		context.lineTo(x + 1.5 * r, y - 4 * r);
-		context.moveTo(x + 1.5 * r, y - 4 * r);
+		context.lineTo(x + 1.5 * r, y - 3.5 * r);
+		context.moveTo(x + 1.5 * r, y - 3.5 * r);
 		context.lineTo(x, y - r);
 		context.moveTo(x, y - r);
 		context.lineTo(x + 2 * r, y - r);
 	}
 
 	var _5 = function (x, y, r) {
-		context.moveTo(x + 2 * r, y - 4 * r);
-		context.lineTo(x, y - 4 * r);
-		context.lineTo(x, y - 2 * r);
-		context.arc(x + r, y - 2 * r, r, Math.PI, 0);
-		context.lineTo(x + 2 * r, y - r);
-		context.arc(x + r, y - r, r, 0, Math.PI);
+		context.moveTo(x + 2 * r, y - 3.5 * r);
+		context.lineTo(x, y - 3.5 * r);
+		context.lineTo(x, y - 1.625 * r);
+		context.ellipse(x + r, y - 1.625 * r, r, .875 * r, 0, Math.PI, 0);
+		context.lineTo(x + 2 * r, y - .875 * r);
+		context.ellipse(x + r, y - .875 * r, r, .875 * r, 0, 0, Math.PI);
 	}
 
 	var _6 = function (x, y, r) {
-		context.moveTo(x + 2 * r, y - 3 * r);
-		context.arc(x + r, y - 3 * r, r, 0, Math.PI, true);
+		context.moveTo(x + 2 * r, y - 2.5 * r);
+		context.arc(x + r, y - 2.5 * r, r, 0, Math.PI, true);
 		context.lineTo(x, y - r);
 		context.moveTo(x + 2 * r, y - r);
 		context.arc(x + r, y - r, r, 0, 2 * Math.PI);
 	}
 
 	var _7 = function (x, y, r) {
-		context.moveTo(x, y - 4 * r);
-		context.lineTo(x + 2 * r, y - 4 * r);
-		context.moveTo(x + 2 * r, y - 4 * r);
+		context.moveTo(x, y - 3.5 * r);
+		context.lineTo(x + 2 * r, y - 3.5 * r);
+		context.moveTo(x + 2 * r, y - 3.5 * r);
 		context.lineTo(x + 0.5 * r, y);
 	}
 
 	var _8 = function (x, y, r) {
-		context.moveTo(x + 2 * r, y - 3 * r);
-		context.arc(x + r, y - 3 * r, r, 0, 2 * Math.PI, true);
-		context.moveTo(x + 2 * r, y - r);
-		context.arc(x + r, y - r, r, 0, 2 * Math.PI, true);
+		context.moveTo(x + 2 * r, y - 2.625 * r);
+		context.ellipse(x + r, y - 2.625 * r, r, .875 * r, 0, 0, 2 * Math.PI, true);
+		context.moveTo(x + 2 * r, y - .875 * r);
+		context.ellipse(x + r, y - .875 * r, r, .875 * r, 0, 0, 2 * Math.PI, true);
 	}
 
 	var _9 = function (x, y, r) {
-		context.moveTo(x + 2 * r, y - 3 * r);
-		context.arc(x + r, y - 3 * r, r, 0, 2 * Math.PI);
+		context.moveTo(x + 2 * r, y - 2.5 * r);
+		context.arc(x + r, y - 2.5 * r, r, 0, 2 * Math.PI);
 		context.lineTo(x + 2 * r, y - r);
 		context.arc(x + r, y - r, r, 0, Math.PI);
 	}
