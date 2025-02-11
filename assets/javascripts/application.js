@@ -935,21 +935,15 @@ $(document).ready(function () {
 					i++;
 				} else if (c == 'm' && (next == 'b' || next == 'p')) { // mb, mp
 					cara.push('v');
-					cara.push(next);
-					i++;
 				} else if (c == 'n' && (next == 'c' || next == 'd' || next == 'j' || next == 't')) { // nc, nd, nj, nt
 					cara.push('v');
-					cara.push(next);
-					i++;
 				} else if (c == 'n' && next == 'g') {
-					if (next2 == 'g' || next2 == 'h' || next2 == 'k' || next2 == 'l' || next2 == 'r' || next2 == 's') { // ngg, ngh, ngk, ngl, ngr, ngs
+					if (next2 == 'g' || next2 == 'h' || next2 == 'k' || next2 == 'l' || next2 == 'r' || next2 == 's' || next2 == "'") { // ngg, ngh, ngk, ngl, ngr, ngs, ng'
 						cara.push('v');
-						cara.push(next2);
-						i += 2;
 					} else { // ng
 						cara.push('q');
-						i++;
 					}
+					i++;
 				} else if (c == 'n' && next == 'y') { // ny
 					cara.push('x');
 					i++;
