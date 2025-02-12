@@ -404,8 +404,8 @@ $(document).ready(function () {
 	}
 
 	var _6 = function (x, y, r) {
-		context.moveTo(x + 2 * r, y - 2.5 * r);
-		context.arc(x + r, y - 2.5 * r, r, 0, Math.PI, true);
+		context.moveTo(x + 2 * r, y - 2.625 * r);
+		context.ellipse(x + r, y - 2.625 * r, r, .875 * r, 0, 0, Math.PI, true);
 		context.lineTo(x, y - r);
 		context.moveTo(x + 2 * r, y - r);
 		context.arc(x + r, y - r, r, 0, 2 * Math.PI);
@@ -428,8 +428,8 @@ $(document).ready(function () {
 	var _9 = function (x, y, r) {
 		context.moveTo(x + 2 * r, y - 2.5 * r);
 		context.arc(x + r, y - 2.5 * r, r, 0, 2 * Math.PI);
-		context.lineTo(x + 2 * r, y - r);
-		context.arc(x + r, y - r, r, 0, Math.PI);
+		context.lineTo(x + 2 * r, y - .875 * r);
+		context.ellipse(x + r, y - .875 * r, r, .875 * r, 0, 0, Math.PI);
 	}
 
 	var _plus = function (x, y, r) {
