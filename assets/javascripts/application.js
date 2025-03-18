@@ -332,10 +332,10 @@ $(document).ready(function () {
 	}
 
 	var _kutiptutup = function (x, y, r) {
-		context.moveTo(x + 0.5 * r, y - 4 * r);
-		context.lineTo(x + 2 * r, y - 4 * r);
-		context.moveTo(x + 2 * r, y - 4 * r);
-		context.lineTo(x + 2 * r, y);
+		context.moveTo(x, y - 4 * r);
+		context.lineTo(x + 1.5 * r, y - 4 * r);
+		context.moveTo(x + 1.5 * r, y - 4 * r);
+		context.lineTo(x + 1.5 * r, y);
 	}
 
 	var _kurungbuka = function (x, y, r) {
@@ -348,12 +348,12 @@ $(document).ready(function () {
 	}
 
 	var _kurungtutup = function (x, y, r) {
-		context.moveTo(x + 0.5 * r, y - 4 * r);
-		context.lineTo(x + 2 * r, y - 4 * r);
-		context.moveTo(x + 2 * r, y - 4 * r);
-		context.lineTo(x + 2 * r, y + 2 * r);
-		context.moveTo(x + 2 * r, y + 2 * r);
-		context.lineTo(x + 0.5 * r, y + 2 * r);
+		context.moveTo(x, y - 4 * r);
+		context.lineTo(x + 1.5 * r, y - 4 * r);
+		context.moveTo(x + 1.5 * r, y - 4 * r);
+		context.lineTo(x + 1.5 * r, y + 2 * r);
+		context.moveTo(x + 1.5 * r, y + 2 * r);
+		context.lineTo(x, y + 2 * r);
 	}
 
 	var _0 = function (x, y, r) {
@@ -798,6 +798,11 @@ $(document).ready(function () {
 				return 2;
 			case '1':
 				return 2.25;
+			case '[':
+			case ']':
+			case '(':
+			case ')':
+				return 2.5;
 			case 'a':
 			case 'k':
 			case 't':
@@ -809,10 +814,6 @@ $(document).ready(function () {
 			case 's':
 			case '/':
 			case '?':
-			case '[':
-			case ']':
-			case '(':
-			case ')':
 			case '0':
 			case '2':
 			case '3':
