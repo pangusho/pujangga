@@ -965,7 +965,7 @@ $(document).ready(function () {
 					cara.push(c);
 				}
 				// insert 'f' if the consonant is not followed by a vowel;
-				if (vowels.indexOf(indo[i + 1]) == -1) {
+				if (cara[cara.length - 1] != 'v' && vowels.indexOf(indo[i + 1]) == -1) {
 					cara.push('f');
 				}
 			} else {
