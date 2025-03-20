@@ -459,11 +459,13 @@ $(document).ready(function () {
 	var vowels = ['i', 'u', 'z', 'o', 'e'];
 	var consonants = ['a', 'k', 'g', 'q', 'c', 'j', 'x', 't', 'd', 'n', 'p', 'b', 'm', 'y', 'r', 'l', 'w', 's', 'h', '`']; // ` consonant placeholder
 	var a_phobic = ['g', 'j', 'd', 'n', 'p', 'b', 'm', 'l', 's', 'z', 'o', '.', ',', '!', '0', '5', '9', ']', ')'];
+	var a_half_phobic = ['a', 'k', 'q', 'c', 'x', 't', 'y', 'r', 'w', 'h', '2', '3', '8'];
 	var s_phobic = ['a', 'x', 'p', 'b', 'm', 'y', 'r', 'l', 'w', 'z', 'o', '.', ',', '!', ';', '0', '5', '6', '[', '('];
+	var s_half_phobic = ['k', 'g', '8', '9'];
 	var q_phobic = ['a', 'k', 'g', 'q', 'c', 'j', 'x', 't', 'd', 'p', 'b', 'm', 'y', 'r', 'w', 's', 'h', 'z', 'o', '.', ',', '!', '2', ']', ')'];
 	var q_phobic_modern = ['a', 'k', 'q', 'c', 'x', 'y', 'r', 'w', 's', 'h', 'z', 'o', '.', ',', '!', '2', ']', ')'];
 	var portruding = ['a', 'q', 'h'];
-	var portruding_sans = ['q', 'h'];
+	var portruding_modern = ['q', 'h'];
 	var breakable = ['-', '+', '=', "'", ':'];
 
 	// moves 'f', 'v', and 'z' to the front of the consonant
@@ -575,7 +577,7 @@ $(document).ready(function () {
 					prevState = state;
 				}
 				if (ax == orig_x) { // align left a, q, h
-					if ((font_style == 'classic' && portruding.indexOf(c) != -1) || (font_style != 'classic' && portruding_sans.indexOf(c) != -1)) {
+					if ((font_style == 'classic' && portruding.indexOf(c) != -1) || (font_style != 'classic' && portruding_modern.indexOf(c) != -1)) {
 						ax += 0.5 * ar;
 					}
 				}
@@ -622,11 +624,15 @@ $(document).ready(function () {
 			if (prevChar == 's') {
 				if (s_phobic.indexOf(c) != -1) {
 					k += 0.25;
+				} else if (s_half_phobic.indexOf(c) != -1) {
+					k += 0.125;
 				}
 			}
 			if (c == 'a') {
 				if (a_phobic.indexOf(prevChar) != -1) {
 					k += 0.25;
+				} else if (a_half_phobic.indexOf(prevChar) != -1) {
+					k += 0.125;
 				}
 			}
 			if (c == 'q' || c == 'h') {
