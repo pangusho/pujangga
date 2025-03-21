@@ -939,19 +939,25 @@ $(document).ready(function () {
 					}
 				}
 			} else if (consonants.indexOf(c) != -1) {
+				var push_v = function() {
+					if (prev == null || prev == ' ') {
+						cara.push(','); // placeholder for nasal sign
+					}
+					cara.push('v');
+				}
+
 				if ((c == 'b' || c == 'd' || c == 'g' || c == 'k' || c == 't') && next == 'h') { // bh, dh, gh, kh, th
-					cara.push(c);
-					cara.push(';');
+					cara.push(c + ';');
 					i++;
 				} else if (c == 'f') { // 'f'
 					cara.push('p;');
 				} else if (c == 'm' && (next == 'b' || next == 'p')) { // mb, mp
-					cara.push('v');
+					push_v();
 				} else if (c == 'n' && (next == 'c' || next == 'd' || next == 'j' || next == 't')) { // nc, nd, nj, nt
-					cara.push('v');
+					push_v();
 				} else if (c == 'n' && next == 'g') {
 					if (next2 == 'g' || next2 == 'h' || next2 == 'k' || next2 == 'l' || next2 == 'r' || next2 == 's' || next2 == "'") { // ngg, ngh, ngk, ngl, ngr, ngs, ng'
-						cara.push('v');
+						push_v();
 					} else { // ng
 						cara.push('q');
 					}
