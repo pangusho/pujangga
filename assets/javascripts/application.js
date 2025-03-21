@@ -457,7 +457,7 @@ $(document).ready(function () {
 
 	var diacritic_vowels = ['i', 'u', 'e'];
 	var vowels = ['i', 'u', 'z', 'o', 'e'];
-	var consonants = ['a', 'k', 'g', 'q', 'c', 'j', 'x', 't', 'd', 'n', 'p', 'b', 'm', 'y', 'r', 'l', 'w', 's', 'h', '`']; // ` consonant placeholder
+	var consonants = ['a', 'k', 'g', 'q', 'c', 'j', 'x', 't', 'd', 'n', 'p', 'b', 'm', 'y', 'r', 'l', 'w', 's', 'h', '`', ',']; // '`', ',' consonant placeholders
 	var a_phobic = ['g', 'j', 'd', 'n', 'p', 'b', 'm', 'l', 's', 'z', 'o', '.', ',', '!', '0', '5', '9', ']', ')'];
 	var a_half_phobic = ['a', 'k', 'q', 'c', 'x', 't', 'y', 'r', 'w', 'h', '2', '3', '8'];
 	var s_phobic = ['a', 'x', 'p', 'b', 'm', 'y', 'r', 'l', 'w', 'z', 'o', '.', ',', '!', ';', '0', '5', '6', '[', '('];
