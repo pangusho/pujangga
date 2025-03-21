@@ -885,7 +885,7 @@ $(document).ready(function () {
 
 	// Do best effort transliteration from Indonesian to Cara key
 	var transliterate = function (indo) {
-		var vowels = ['a', 'e', 'é', 'i', 'o', 'u'];
+		var vowels = ['a', 'e', 'é', 'è', 'i', 'o', 'u'];
 		var consonants = ['b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x', 'y', 'z', "'"];
 
 		indo = indo.toLowerCase();
@@ -900,7 +900,7 @@ $(document).ready(function () {
 
 			if (vowels.indexOf(c) != -1) {
 				// insert the vowel carrier if the vowel is not after a consonent
-				if (prev == 'i' || prev == 'é') {
+				if (prev == 'i' || prev == 'é' || prev == 'è') {
 					cara.push('y')
 				} else if ((prev == 'u' && prev2 != 'e') || prev == 'o') {
 					cara.push('w');
@@ -911,7 +911,7 @@ $(document).ready(function () {
 				if (c == 'e' && next == 'u') {
 					cara.push('eu'); // sundanese 'eu'
 					i++;
-				} else if (c == 'é') {
+				} else if (c == 'é' || c == 'è') {
 					cara.push('z');
 				} else if (c != 'a') {
 					cara.push(c);
@@ -939,11 +939,12 @@ $(document).ready(function () {
 					}
 				}
 			} else if (consonants.indexOf(c) != -1) {
-				if (c == 'f') { // 'f'
-					cara.push('p;');
-				} else if (c == 'k' && next == 'h') { // kh
-					cara.push('k;');
+				if ((c == 'b' || c == 'd' || c == 'g' || c == 'k' || c == 't') && next == 'h') { // bh, dh, gh, kh, th
+					cara.push(c);
+					cara.push(';');
 					i++;
+				} else if (c == 'f') { // 'f'
+					cara.push('p;');
 				} else if (c == 'm' && (next == 'b' || next == 'p')) { // mb, mp
 					cara.push('v');
 				} else if (c == 'n' && (next == 'c' || next == 'd' || next == 'j' || next == 't')) { // nc, nd, nj, nt
