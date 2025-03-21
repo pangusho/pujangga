@@ -894,6 +894,7 @@ $(document).ready(function () {
 		for (var i = 0; i < indo.length; i++) {
 			var c = indo[i];
 			var prev = indo[i - 1];
+			var prev2 = indo[i - 2];
 			var next = indo[i + 1];
 			var next2 = indo[i + 2];
 
@@ -901,13 +902,16 @@ $(document).ready(function () {
 				// insert the vowel carrier if the vowel is not after a consonent
 				if (prev == 'i' || prev == 'é') {
 					cara.push('y')
-				} else if (prev == 'u' || prev == 'o') {
+				} else if ((prev == 'u' && prev2 != 'e') || prev == 'o') {
 					cara.push('w');
 				} else if (consonants.indexOf(prev) == -1) {
 					cara.push('a');
 				}
 				// insert the vowel if the vowel is not 'a'
-				if (c == 'é') {
+				if (c == 'e' && next == 'u') {
+					cara.push('eu'); // sundanese 'eu'
+					i++;
+				} else if (c == 'é') {
 					cara.push('z');
 				} else if (c != 'a') {
 					cara.push(c);
