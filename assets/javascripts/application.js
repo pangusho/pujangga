@@ -1064,6 +1064,10 @@ $(document).ready(function () {
 		var input_text = $(this).val();
 		parse_adjust(input_text);
 	});
+	$("#key-input").bind("paste", function(e){
+		var input_text = e.originalEvent.clipboardData.getData('text');
+		parse_adjust(input_text);
+	} );
 
 	$("#save_button").click(function () {
 		var short_text = text_height < min_height || num_lines < 2;
