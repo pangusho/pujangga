@@ -939,7 +939,7 @@ $(document).ready(function () {
 					}
 				}
 			} else if (consonants.indexOf(c) != -1) {
-				var push_v = function() {
+				var push_v = function () {
 					if (prev == null || prev == ' ') {
 						cara.push(','); // placeholder for nasal sign
 					}
@@ -1064,10 +1064,14 @@ $(document).ready(function () {
 		var input_text = $(this).val();
 		parse_adjust(input_text);
 	});
-	$("#key-input").bind("paste", function(e){
-		var input_text = e.originalEvent.clipboardData.getData('text');
-		parse_adjust(input_text);
-	} );
+
+	// Handle paste event
+	$("#key-input").bind("paste", function (e) {
+		var _this = $(this);
+		setTimeout(function () {
+			parse_adjust(_this.val());
+		});
+	});
 
 	$("#save_button").click(function () {
 		var short_text = text_height < min_height || num_lines < 2;
