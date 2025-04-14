@@ -122,8 +122,6 @@ $(document).ready(function () {
 	}
 
 	var _t = function (x, y, r, squeeze = 1) {
-		// x -= 0.125 * r;
-
 		left_t(x, y, r, squeeze);
 		if (font_style == 'classic') {
 			context.lineTo(x + 2 * r * squeeze, y);
@@ -192,8 +190,6 @@ $(document).ready(function () {
 	}
 
 	var _s = function (x, y, r) {
-		// x -= 0.125 * r;
-
 		left_s(x, y, r);
 		context.lineTo(x + 2 * r, y);
 	}
