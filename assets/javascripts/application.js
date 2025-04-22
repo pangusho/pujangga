@@ -457,7 +457,7 @@ $(document).ready(function () {
 	var a_phobic = ['g', 'j', 'd', 'n', 'p', 'b', 'm', 'l', 's', 'z', 'o', '.', ',', '!', '0', '5', '9', ']', ')'];
 	var a_half_phobic = ['a', 'k', 'q', 'c', 'x', 't', 'y', 'r', 'w', 'h', '2', '3', '8'];
 	var s_phobic = ['a', 'x', 'p', 'b', 'm', 'y', 'r', 'l', 'w', 'z', 'o', '.', ',', '!', ';', '0', '5', '6', '[', '('];
-	var s_half_phobic = ['k', 'g', '8', '9'];
+	var s_half_phobic = ['k', 'g', 'h', '8', '9'];
 	var q_phobic = ['a', 'k', 'g', 'q', 'c', 'j', 'x', 't', 'd', 'p', 'b', 'm', 'y', 'r', 'w', 's', 'h', 'z', 'o', '.', ',', '!', '2', ']', ')'];
 	var q_phobic_modern = ['a', 'k', 'q', 'c', 'x', 'y', 'r', 'w', 's', 'h', 'z', 'o', '.', ',', '!', '2', ']', ')'];
 	var portruding = ['a', 'q', 'h'];
@@ -618,7 +618,9 @@ $(document).ready(function () {
 		if (font_style == 'classic') {
 			k = 0;
 			if (prevChar == 's') {
-				if (s_phobic.indexOf(c) != -1) {
+				if (c == 'a') {
+					k += 0.375;
+				} else if (s_phobic.indexOf(c) != -1) {
 					k += 0.25;
 				} else if (s_half_phobic.indexOf(c) != -1) {
 					k += 0.125;
