@@ -884,7 +884,7 @@ $(document).ready(function () {
 	// Do best effort transliteration from Indonesian to Cara key
 	var transliterate = function (indo) {
 		var vowels = ['a', 'e', 'é', 'è', 'i', 'o', 'u'];
-		var consonants = ['b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x', 'y', 'z', "'"];
+		var consonants = ['b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x', 'y', 'z', "'", "’"];
 
 		indo = indo.toLowerCase();
 		var cara = [];
@@ -970,7 +970,7 @@ $(document).ready(function () {
 					cara.push('kfs');
 				} else if (c == 'z') { // z
 					cara.push('j;');
-				} else if (c == "'") { // glottal stop
+				} else if (c == "'" || c == "’") { // glottal stop
 					cara.push('a');
 				} else {
 					cara.push(c);
@@ -985,7 +985,7 @@ $(document).ready(function () {
 				}
 				if (c == ';') {
 					cara.push(',');
-				} else {
+				} else if (c != '\\') { // use backslash as digraph separator
 					cara.push(c);
 				}
 			}
