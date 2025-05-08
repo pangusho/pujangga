@@ -256,8 +256,8 @@ $(document).ready(function () {
 
 	var _i = function (x, y, r) {
 		var rcos = 0.75 * r;
-		context.moveTo(x - 2 * r - rcos, y - 3 * r);
-		context.lineTo(x - 2 * r + rcos, y - 3 * r);
+		context.moveTo(x - 2 * r - rcos, y - 3.125 * r);
+		context.lineTo(x - 2 * r + rcos, y - 3.125 * r);
 	}
 
 	var _u = function (x, y, r) {
@@ -278,7 +278,7 @@ $(document).ready(function () {
 	}
 
 	var _e = function (x, y, r) {
-		_point(x - 2 * r, y - 3 * r, r);
+		_point(x - 2 * r, y - 3.125 * r, r);
 	}
 
 	var _hubung = function (x, y, r) {
