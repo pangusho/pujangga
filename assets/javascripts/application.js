@@ -945,7 +945,7 @@ $(document).ready(function () {
 					i++;
 				} else if (c == 'f') { // 'f'
 					cara.push('p;');
-				} else if (c == 'm' && (next == 'b' || next == 'p')) { // mb, mp
+				} else if (c == 'm' && (next == 'b' || next == 'f' || next == 'p' || next == 'v')) { // mb, mf, mp, mv
 					push_v();
 				} else if (c == 'n' && (next == 'c' || next == 'd' || next == 'j' || next == 't')) { // nc, nd, nj, nt
 					push_v();
