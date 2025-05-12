@@ -122,8 +122,6 @@ $(document).ready(function () {
 	}
 
 	var _t = function (x, y, r, squeeze = 1) {
-		// x -= 0.125 * r;
-
 		left_t(x, y, r, squeeze);
 		if (font_style == 'classic') {
 			context.lineTo(x + 2 * r * squeeze, y);
@@ -192,8 +190,6 @@ $(document).ready(function () {
 	}
 
 	var _s = function (x, y, r) {
-		// x -= 0.125 * r;
-
 		left_s(x, y, r);
 		context.lineTo(x + 2 * r, y);
 	}
@@ -260,8 +256,8 @@ $(document).ready(function () {
 
 	var _i = function (x, y, r) {
 		var rcos = 0.75 * r;
-		context.moveTo(x - 2 * r - rcos, y - 3 * r);
-		context.lineTo(x - 2 * r + rcos, y - 3 * r);
+		context.moveTo(x - 2 * r - rcos, y - 3.125 * r);
+		context.lineTo(x - 2 * r + rcos, y - 3.125 * r);
 	}
 
 	var _u = function (x, y, r) {
@@ -282,7 +278,7 @@ $(document).ready(function () {
 	}
 
 	var _e = function (x, y, r) {
-		_point(x - 2 * r, y - 3 * r, r);
+		_point(x - 2 * r, y - 3.125 * r, r);
 	}
 
 	var _hubung = function (x, y, r) {
@@ -461,7 +457,7 @@ $(document).ready(function () {
 	var a_phobic = ['g', 'j', 'd', 'n', 'p', 'b', 'm', 'l', 's', 'z', 'o', '.', ',', '!', '0', '5', '9', ']', ')'];
 	var a_half_phobic = ['a', 'k', 'q', 'c', 'x', 't', 'y', 'r', 'w', 'h', '2', '3', '8'];
 	var s_phobic = ['a', 'x', 'p', 'b', 'm', 'y', 'r', 'l', 'w', 'z', 'o', '.', ',', '!', ';', '0', '5', '6', '[', '('];
-	var s_half_phobic = ['k', 'g', '8', '9'];
+	var s_half_phobic = ['k', 'g', 'h', '8', '9'];
 	var q_phobic = ['a', 'k', 'g', 'q', 'c', 'j', 'x', 't', 'd', 'p', 'b', 'm', 'y', 'r', 'w', 's', 'h', 'z', 'o', '.', ',', '!', '2', ']', ')'];
 	var q_phobic_modern = ['a', 'k', 'q', 'c', 'x', 'y', 'r', 'w', 's', 'h', 'z', 'o', '.', ',', '!', '2', ']', ')'];
 	var portruding = ['a', 'q', 'h'];
@@ -622,7 +618,9 @@ $(document).ready(function () {
 		if (font_style == 'classic') {
 			k = 0;
 			if (prevChar == 's') {
-				if (s_phobic.indexOf(c) != -1) {
+				if (c == 'a') {
+					k += 0.375;
+				} else if (s_phobic.indexOf(c) != -1) {
 					k += 0.25;
 				} else if (s_half_phobic.indexOf(c) != -1) {
 					k += 0.125;
@@ -886,7 +884,7 @@ $(document).ready(function () {
 	// Do best effort transliteration from Indonesian to Cara key
 	var transliterate = function (indo) {
 		var vowels = ['a', 'e', 'é', 'è', 'i', 'o', 'u'];
-		var consonants = ['b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x', 'y', 'z', "'"];
+		var consonants = ['b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x', 'y', 'z', "'", "’"];
 
 		indo = indo.toLowerCase();
 		var cara = [];
@@ -894,7 +892,6 @@ $(document).ready(function () {
 		for (var i = 0; i < indo.length; i++) {
 			var c = indo[i];
 			var prev = indo[i - 1];
-			var prev2 = indo[i - 2];
 			var next = indo[i + 1];
 			var next2 = indo[i + 2];
 
@@ -902,16 +899,13 @@ $(document).ready(function () {
 				// insert the vowel carrier if the vowel is not after a consonent
 				if (prev == 'i' || prev == 'é' || prev == 'è') {
 					cara.push('y')
-				} else if ((prev == 'u' && prev2 != 'e') || prev == 'o') {
+				} else if (prev == 'u' || prev == 'o') {
 					cara.push('w');
 				} else if (consonants.indexOf(prev) == -1) {
 					cara.push('a');
 				}
 				// insert the vowel if the vowel is not 'a'
-				if (c == 'e' && next == 'u') {
-					cara.push('eu'); // sundanese 'eu'
-					i++;
-				} else if (c == 'é' || c == 'è') {
+				if (c == 'é' || c == 'è') {
 					cara.push('z');
 				} else if (c != 'a') {
 					cara.push(c);
@@ -939,7 +933,7 @@ $(document).ready(function () {
 					}
 				}
 			} else if (consonants.indexOf(c) != -1) {
-				var push_v = function() {
+				var push_v = function () {
 					if (prev == null || prev == ' ') {
 						cara.push(','); // placeholder for nasal sign
 					}
@@ -951,7 +945,7 @@ $(document).ready(function () {
 					i++;
 				} else if (c == 'f') { // 'f'
 					cara.push('p;');
-				} else if (c == 'm' && (next == 'b' || next == 'p')) { // mb, mp
+				} else if (c == 'm' && (next == 'b' || next == 'f' || next == 'p' || next == 'v')) { // mb, mf, mp, mv
 					push_v();
 				} else if (c == 'n' && (next == 'c' || next == 'd' || next == 'j' || next == 't' || next == 'z')) { // nc, nd, nj, nt, nz
 					push_v();
@@ -976,7 +970,7 @@ $(document).ready(function () {
 					cara.push('kfs');
 				} else if (c == 'z') { // z
 					cara.push('j;');
-				} else if (c == "'") { // glottal stop
+				} else if (c == "'" || c == "’") { // glottal stop
 					cara.push('a');
 				} else {
 					cara.push(c);
@@ -991,7 +985,7 @@ $(document).ready(function () {
 				}
 				if (c == ';') {
 					cara.push(',');
-				} else {
+				} else if (c != '\\') { // use backslash as digraph separator
 					cara.push(c);
 				}
 			}
@@ -1063,6 +1057,14 @@ $(document).ready(function () {
 	$("#key-input").keyup(function () {
 		var input_text = $(this).val();
 		parse_adjust(input_text);
+	});
+
+	// Handle paste event
+	$("#key-input").bind("paste", function (e) {
+		var _this = $(this);
+		setTimeout(function () {
+			parse_adjust(_this.val());
+		});
 	});
 
 	$("#save_button").click(function () {
