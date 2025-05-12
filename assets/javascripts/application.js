@@ -953,7 +953,7 @@ $(document).ready(function () {
 					cara.push('p;');
 				} else if (c == 'm' && (next == 'b' || next == 'p')) { // mb, mp
 					push_v();
-				} else if (c == 'n' && (next == 'c' || next == 'd' || next == 'j' || next == 't')) { // nc, nd, nj, nt
+				} else if (c == 'n' && (next == 'c' || next == 'd' || next == 'j' || next == 't' || next == 'z')) { // nc, nd, nj, nt, nz
 					push_v();
 				} else if (c == 'n' && next == 'g') {
 					if (next2 == 'g' || next2 == 'h' || next2 == 'k' || next2 == 'l' || next2 == 'r' || next2 == 's' || next2 == "'") { // ngg, ngh, ngk, ngl, ngr, ngs, ng'
