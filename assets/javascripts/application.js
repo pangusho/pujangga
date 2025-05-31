@@ -11,8 +11,8 @@ $(document).ready(function () {
 
 	// Default values
 	var font_style = 'classic';
-	var font_size = 14;
-	var font_width = 3;
+	var font_size = 16;
+	var font_width = 4;
 	var font_width_abs = get_font_width_abs(font_width, font_size);
 	var font_color = 'black';
 	var fat_squeeze = 7 / 8; // how much the wide characters are being squeezed horizontally
