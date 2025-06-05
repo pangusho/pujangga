@@ -547,7 +547,9 @@ $(document).ready(function () {
 			wordStartIdx = i + 1;
 			wordStartPos = ax;
 			numLines++;
+			state = 'a';
 			prevChar = ' ';
+			prevState = 'a';
 		}
 
 		var breakLocations = [];
@@ -581,7 +583,6 @@ $(document).ready(function () {
 					if (wordStartPos > orig_x) { // break whole word
 						breakLocations.push(wordStartIdx);
 						i = wordStartIdx - 1;
-						state = 'a';
 						lineBreak(i);
 						continue;
 					}
