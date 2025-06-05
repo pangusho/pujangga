@@ -950,7 +950,8 @@ $(document).ready(function () {
 				} else if (c == 'n' && (next == 'c' || next == 'd' || next == 'j' || next == 't' || next == 'z')) { // nc, nd, nj, nt, nz
 					push_v();
 				} else if (c == 'n' && next == 'g') {
-					if (next2 == 'g' || next2 == 'h' || next2 == 'k' || next2 == 'l' || next2 == 'r' || next2 == 's' || next2 == "'") { // ngg, ngh, ngk, ngl, ngr, ngs, ng'
+					if (next2 == 'g' || next2 == 'h' || next2 == 'k' || next2 == 'l' || next2 == 'r' || next2 == 's' || next2 == "'" || next2 == "’") {
+						// ngg, ngh, ngk, ngl, ngr, ngs, ng'
 						push_v();
 					} else { // ng
 						cara.push('q');
