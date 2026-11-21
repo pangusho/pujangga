@@ -16,6 +16,8 @@ $(document).ready(function () {
 	var font_width_abs = get_font_width_abs(font_width, font_size);
 	var font_color = 'black';
 	var fat_squeeze = 7 / 8; // how much the wide characters are being squeezed horizontally
+	var n_angle = 75 / 180 * Math.PI; // how much the final tail of n is being raised
+	var n_offset_ratio = 1 / Math.sin(n_angle) - 1 / Math.tan(n_angle);
 
 	var right_a = function (x, y, r, squeeze = 1) {
 		context.moveTo(x, y - r);
@@ -38,6 +40,12 @@ $(document).ready(function () {
 		context.moveTo(x, y - r);
 		context.ellipse(x + r * squeeze, y - r, r * squeeze, r, 0, Math.PI, 0);
 		context.lineTo(x + 2 * r * squeeze, y);
+	}
+
+	var left_n = function (x, y, r) {
+		context.moveTo(x + 2 * r, y - 2 * r);
+		context.lineTo(x + r, y - 2 * r);
+		context.arc(x + r, y - r, r, 3 * Math.PI / 2, Math.PI / 2, true);
 	}
 
 	var left_t = function (x, y, r, squeeze = 1) {
@@ -134,9 +142,9 @@ $(document).ready(function () {
 	}
 
 	var _n = function (x, y, r) {
-		context.moveTo(x + 2 * r, y - 2 * r);
-		context.lineTo(x + r, y - 2 * r);
-		context.arc(x + r, y - r, r, 3 * Math.PI / 2, 0, true);
+		left_n(x, y, r);
+		curve_r = r / Math.sin(n_angle);
+		context.arc(x + r, y - curve_r, curve_r, Math.PI / 2, Math.PI / 2 - n_angle, true);
 	}
 
 	var _p = function (x, y, r, squeeze = 1) {
@@ -201,8 +209,8 @@ $(document).ready(function () {
 		right_a(x + r, y, r, fat_squeeze);
 	}
 
-	var _f = function (x, y, r) {
-		context.moveTo(x - r, y - r);
+	var _f = function (x, y, r, y_offset = 0) {
+		context.moveTo(x - r, y - y_offset);
 		context.lineTo(x - r, y + r);
 		if (font_style == 'classic') {
 			context.arc(x - 2 * r, y + r, r, 0, Math.PI);
@@ -214,11 +222,9 @@ $(document).ready(function () {
 	var _fn = function (x, y, r) {
 		if (font_style == 'classic') {
 			_n(x, y, r);
-			_f(x + 3 * r, y, r);
+			_f(x + 3 * r, y, r, r * n_offset_ratio);
 		} else {
-			context.moveTo(x + 2 * r, y - 2 * r);
-			context.lineTo(x + r, y - 2 * r);
-			context.arc(x + r, y - r, r, 3 * Math.PI / 2, Math.PI / 2, true);
+			left_n(x, y, r);
 			context.arc(x + r, y + r, r, 3 * Math.PI / 2, Math.PI / 2);
 		}
 	}
@@ -229,8 +235,8 @@ $(document).ready(function () {
 		_fn(x, y, r);
 	}
 
-	var _v = function (x, y, r) {
-		context.moveTo(x - r, y - r);
+	var _v = function (x, y, r, y_offset = 0) {
+		context.moveTo(x - r, y - y_offset);
 		context.lineTo(x - r, y + r);
 		context.arc(x, y + r, r, Math.PI, Math.PI / 2, true);
 	}
@@ -238,11 +244,9 @@ $(document).ready(function () {
 	var _vn = function (x, y, r) {
 		if (font_style == 'classic') {
 			_n(x, y, r);
-			_v(x + 3 * r, y, r);
+			_v(x + 3 * r, y, r, r * n_offset_ratio);
 		} else {
-			context.moveTo(x + 2 * r, y - 2 * r);
-			context.lineTo(x + r, y - 2 * r);
-			context.arc(x + r, y - r, r, 3 * Math.PI / 2, Math.PI / 2, true);
+			left_n(x, y, r);
 			context.arc(x + r, y + r, r, 3 * Math.PI / 2, 0);
 			context.arc(x + 3 * r, y + r, r, Math.PI, Math.PI / 2, true);
 		}
@@ -775,10 +779,11 @@ $(document).ready(function () {
 		}
 
 		if (consonants.indexOf(c) != -1) {
+			var y_offset = (font_style == 'classic') ? 0 : ar;
 			if (state == 'f') {
-				_f(next_ax, ay, ar)
+				_f(next_ax, ay, ar, y_offset);
 			} else if (state == 'v') {
-				_v(next_ax, ay, ar)
+				_v(next_ax, ay, ar, y_offset);
 			}
 		}
 
