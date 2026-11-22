@@ -71,18 +71,19 @@ $(document).ready(function () {
 	}
 
 	var left_s = function (x, y, r, squeeze = 1) {
+		context.moveTo(x + 2 * r * squeeze, y - r);
+		context.lineTo(x + 2 * r * squeeze, y - 2 * r);
 		if (font_style == 'classic') {
-			context.moveTo(x + r * squeeze, y);
-			context.ellipse(x + r * squeeze, y - r, r * squeeze, r, 0, Math.PI / 2, 3 * Math.PI / 2);
-			context.lineTo(x + (2 * squeeze + 0.5) * r, y - 2 * r);
-			context.moveTo(x + 2 * r * squeeze, y - 2 * r);
-		} else {
-			context.moveTo(x, y);
-			context.lineTo(x, y - r);
-			context.ellipse(x + r * squeeze, y - r, r * squeeze, r, 0, Math.PI, 3 * Math.PI / 2);
-			context.lineTo(x + 2 * r * squeeze, y - 2 * r);
+			context.moveTo(x + (2 * squeeze + 0.5) * r, y - 2 * r);
 		}
-		context.lineTo(x + 2 * r * squeeze, y - r);
+		context.lineTo(x + r * squeeze, y - 2 * r);
+		context.ellipse(x + r * squeeze, y - r, r * squeeze, r, 0, 3 * Math.PI / 2, Math.PI, true);
+		if (font_style == 'classic') {
+			curve_r = r / Math.sin(n_angle);
+			context.arc(x + curve_r, y - r, curve_r, Math.PI, Math.PI - n_angle, true);
+		} else {
+			context.lineTo(x, y);
+		}
 	}
 
 	var _point = function (x, y, r) {
@@ -199,6 +200,7 @@ $(document).ready(function () {
 
 	var _s = function (x, y, r) {
 		left_s(x, y, r);
+		context.moveTo(x + 2 * r, y - r);
 		context.lineTo(x + 2 * r, y);
 	}
 
